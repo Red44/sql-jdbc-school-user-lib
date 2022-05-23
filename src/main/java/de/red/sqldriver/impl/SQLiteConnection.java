@@ -1,23 +1,22 @@
 package de.red.sqldriver.impl;
 
-import de.red.sqldriver.SQLDriver;
-import java.sql.SQLException;
+import de.red.sqldriver.SQLConnection;
 
-public class SQLite extends SQLDriver {
+public class SQLiteConnection extends SQLConnection {
 
   static {
     loadDriver("org.sqlite.JDBC");
   }
 
-  public SQLite(String user, String pwd) {
+  public SQLiteConnection(String user, String pwd) {
     super(user, pwd);
   }
 
-  public SQLite(String user, String pwd, String ip) {
+  public SQLiteConnection(String user, String pwd, String ip) {
     super(user, pwd, ip);
   }
 
-  public SQLite(String pwd) {
+  public SQLiteConnection(String pwd) {
     super(pwd);
   }
   @Override

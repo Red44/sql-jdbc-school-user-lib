@@ -1,22 +1,21 @@
 package de.red.sqldriver.impl;
 
-import de.red.sqldriver.SQLDriver;
-import java.sql.SQLException;
+import de.red.sqldriver.SQLConnection;
 
-public class PostgreSQL extends SQLDriver {
+public class PostgreSQLConnection extends SQLConnection {
   static {
     loadDriver("org.postgresql.Driver");
   }
 
-  public PostgreSQL(String user, String pwd) {
+  public PostgreSQLConnection(String user, String pwd) {
     super(user, pwd);
   }
 
-  public PostgreSQL(String user, String pwd, String ip) {
+  public PostgreSQLConnection(String user, String pwd, String ip) {
     super(user, pwd, ip);
   }
 
-  public PostgreSQL(String pwd) {
+  public PostgreSQLConnection(String pwd) {
     super(pwd);
   }
 

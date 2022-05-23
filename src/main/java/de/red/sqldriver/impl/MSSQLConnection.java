@@ -1,24 +1,21 @@
 package de.red.sqldriver.impl;
 
-import de.red.sqldriver.SQLDriver;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import de.red.sqldriver.SQLConnection;
 
-public class MSSQL extends SQLDriver {
+public class MSSQLConnection extends SQLConnection {
   static {
     loadDriver("com.microsoft.sqlserver.jdbc.SQLServerDriver");
   }
 
-  public MSSQL(String user, String pwd) {
+  public MSSQLConnection(String user, String pwd) {
     super(user, pwd);
   }
 
-  public MSSQL(String user, String pwd, String ip) {
+  public MSSQLConnection(String user, String pwd, String ip) {
     super(user, pwd, ip);
   }
 
-  public MSSQL(String user) {
+  public MSSQLConnection(String user) {
     super(user);
   }
 

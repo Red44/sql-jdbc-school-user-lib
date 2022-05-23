@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public abstract class SQLDriver {
+public abstract class SQLConnection {
 
   final String user;
   final String ip;
@@ -13,19 +13,19 @@ public abstract class SQLDriver {
   protected String pwd;
 
 
-  public SQLDriver(String user, String pwd) {
+  public SQLConnection(String user, String pwd) {
     this.user = user;
     this.ip = "127.0.0.1";
     this.pwd = pwd;
   }
 
-  public SQLDriver(String user, String pwd, String ip) {
+  public SQLConnection(String user, String pwd, String ip) {
     this.user = user;
     this.ip = ip;
     this.pwd = pwd;
   }
 
-  public SQLDriver(String pwd) {
+  public SQLConnection(String pwd) {
     this.user = "root";
     this.ip = "127.0.0.1";
     this.pwd = pwd;

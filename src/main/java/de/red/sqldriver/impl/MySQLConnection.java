@@ -1,24 +1,23 @@
 package de.red.sqldriver.impl;
 
-import de.red.sqldriver.SQLDriver;
-import java.sql.DriverManager;
+import de.red.sqldriver.SQLConnection;
 import java.sql.SQLException;
 
-public class MySQL extends SQLDriver {
+public class MySQLConnection extends SQLConnection {
 
   static {
     loadDriver("com.mysql.jdbc.Driver");
   }
 
-  public MySQL(String user, String pwd) {
+  public MySQLConnection(String user, String pwd) {
     super(user, pwd);
   }
 
-  public MySQL(String user, String pwd, String ip) {
+  public MySQLConnection(String user, String pwd, String ip) {
     super(user, pwd, ip);
   }
 
-  public MySQL(String user) {
+  public MySQLConnection(String user) {
     super(user);
   }
 
