@@ -9,7 +9,6 @@ public class SQLite extends SQLDriver {
     loadDriver("org.sqlite.JDBC");
   }
 
-
   public SQLite(String user, String pwd) {
     super(user, pwd);
   }
@@ -22,7 +21,7 @@ public class SQLite extends SQLDriver {
     super(pwd);
   }
   @Override
-  public void connect(String database) throws SQLException {
+  public void connect(String database)  {
      setConnection("jdbc:sqlite:"+database,"","");
   }
 }

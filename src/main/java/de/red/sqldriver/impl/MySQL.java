@@ -23,9 +23,8 @@ public class MySQL extends SQLDriver {
   }
 
   @Override
-  public void connect(String database) throws SQLException {
-    super.connection = DriverManager.getConnection(
-        "jdbc:mysql://"+super.getIp()+"/"+database,super.getUser(),super.pwd);
+  public void connect(String database)  {
+    super.setConnection("jdbc:mysql://"+super.getIp()+"/"+database,super.getUser(),super.pwd);
   }
 
   @Override

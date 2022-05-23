@@ -23,7 +23,7 @@ public class MSSQL extends SQLDriver {
   }
 
   @Override
-  public void connect(String database) throws SQLException {
+  public void connect(String database) {
     super.setConnection("jdbc:sqlserver://"+super.getIp()+"\\\\"+database,super.getUser(),super.pwd);
   }
 

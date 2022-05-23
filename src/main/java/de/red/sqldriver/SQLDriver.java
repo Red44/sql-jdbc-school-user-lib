@@ -43,7 +43,7 @@ public abstract class SQLDriver {
     return connection;
   }
 
-  public abstract void connect(String database) throws SQLException;
+  public abstract void connect(String database);
 
   public void disconnect() throws SQLException {
     this.connection.close();
@@ -61,8 +61,12 @@ public abstract class SQLDriver {
     }
   }
 
-  protected void setConnection(String connectionURL,String user, String pwd) throws SQLException {
-    this.connection = DriverManager.getConnection(connectionURL,user,pwd);
+  protected void setConnection(String connectionURL,String user, String pwd) {
+    try {
+      this.connection = DriverManager.getConnection(connectionURL, user, pwd);
+    }catch (SQLException e){
+      e.printStackTrace();
+    }
   }
 
 }
