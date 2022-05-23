@@ -1,14 +1,16 @@
 package de.red.sqldriver;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public abstract class SQLDriver {
 
   final String user;
   final String ip;
 
-  Connection connection;
-  String pwd;
+  protected Connection connection;
+  protected String pwd;
 
 
   public SQLDriver(String user, String pwd) {
@@ -23,9 +25,10 @@ public abstract class SQLDriver {
     this.pwd = pwd;
   }
 
-  public SQLDriver(String user) {
-    this.user = user;
+  public SQLDriver(String pwd) {
+    this.user = "root";
     this.ip = "127.0.0.1";
+    this.pwd = pwd;
   }
 
   public final String getUser() {
@@ -40,12 +43,26 @@ public abstract class SQLDriver {
     return connection;
   }
 
-  public abstract void connect();
+  public abstract void connect(String database) throws SQLException;
 
-  public abstract void disconnect();
+  public void disconnect() throws SQLException {
+    this.connection.close();
+  }
 
   public String getName() {
     return this.getClass().getSimpleName();
+  }
+
+  protected static void loadDriver(String clazz){
+    try {
+       Class.forName(clazz);
+    }catch (ClassNotFoundException e){
+      e.printStackTrace();
+    }
+  }
+
+  protected void setConnection(String connectionURL,String user, String pwd) throws SQLException {
+    this.connection = DriverManager.getConnection(connectionURL,user,pwd);
   }
 
 }

@@ -1,9 +1,12 @@
 package de.red.sqldriver.impl;
 
 import de.red.sqldriver.SQLDriver;
+import java.sql.SQLException;
 
 public class Postgres extends SQLDriver {
-
+  static {
+    loadDriver("org.postgresql.Driver");
+  }
 
   public Postgres(String user, String pwd) {
     super(user, pwd);
@@ -13,17 +16,12 @@ public class Postgres extends SQLDriver {
     super(user, pwd, ip);
   }
 
-  public Postgres(String user) {
-    super(user);
+  public Postgres(String pwd) {
+    super(pwd);
   }
 
   @Override
-  public void connect() {
-
-  }
-
-  @Override
-  public void disconnect() {
-
+  public void connect(String database) throws SQLException {
+        super.setConnection( "jdbc:postgresql://"+super.getIp()+"/"+database,super.getUser(),super.pwd);
   }
 }
