@@ -20,7 +20,7 @@ public class SchoolUserConnectionBuilder {
     return this;
   }
 
-  public Connection build(String name){
+  public Connection build(){
     if(name == null|| pwd == null){
       throw new RuntimeException("Name or password is missing!");
     }
